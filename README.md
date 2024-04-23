@@ -19,7 +19,7 @@
 # Crear aplicacion
 ```
     cd filtrar
-    python manage.py usuarios
+    python manage.py startapp usuarios
 ```
 
 # Agregamos la aplicacion a nuestro setting.py
@@ -56,7 +56,8 @@
             ventas = ventas.filter(vendedor__username=vendedor_filtro)
 
         return render(request, 'lista_ventas.html', {'ventas': ventas, 'fecha_inicio': fecha_inicio_filtro, 'fecha_fin': fecha_fin_filtro, 'vendedor_filtro': vendedor_filtro})
-
+```
+```
     #models.py
     from django.db import models
     from django.contrib.auth.models import User
@@ -67,7 +68,8 @@
         cantidad = models.IntegerField()
         cliente = models.CharField(max_length=100)
         producto = models.CharField(max_length=100)
-    
+```
+```
     #admin.py
     from django.contrib import admin
     from django.contrib.auth.models import Group
@@ -86,7 +88,8 @@
     urlpatterns = [
         path('ventas/', lista_ventas, name='lista_ventas'),
     ]
-
+```
+```
     #signals.py
     from django.contrib.auth.models import Group, Permission
 from django.db.models.signals import post_migrate
